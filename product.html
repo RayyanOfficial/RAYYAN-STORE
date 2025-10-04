@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><a href="index.html">← Back to Shop</a></h1>
+    </header>
+
+    <main id="productContainer" style="margin-top:30px"></main>
+  </div>
+
+  <script>
+    const productContainer = document.getElementById('productContainer');
+    const product = JSON.parse(localStorage.getItem('selectedProduct'));
+
+    if (!product) {
+      productContainer.innerHTML = '<div class="empty">No product selected</div>';
+    } else {
+      productContainer.innerHTML = `
+        <div class="card" style="max-width:700px;margin:auto">
+          <div class="thumb" style="height:300px">
+            <img src="${product.image}" alt="${product.title}" />
+          </div>
+          <h2 style="margin-top:15px">${product.title}</h2>
+          <p style="color:#059669;font-weight:700;font-size:18px">₨${product.price}</p>
+          <p style="margin-top:10px">${product.description}</p>
+          <p style="margin-top:10px;color:#6b7280">Category: ${product.category}</p>
+        </div>`;
+    }
+  </script>
+</body>
+</html>
